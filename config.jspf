@@ -1,0 +1,19 @@
+<%@page import="java.sql.*" %>
+<%! 
+  private String DB_URL = "jdbc:oracle:thin:@localhost:1521/XEPDB1"; 
+  private String DB_USER = "webuser"; 
+  private String DB_PASS = "web123"; 
+  Connection getConnection() throws Exception { 
+    Class.forName("oracle.jdbc.driver.OracleDriver");
+    return DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+  }
+
+  void logIgnoredException(String where, Throwable t) {
+    try {
+      System.err.println("[BookSafarAi] " + where + ": " + t);
+      if (t != null) t.printStackTrace(System.err);
+    } catch (Exception ignored) {
+      
+    }
+  }
+%>

@@ -1,0 +1,22 @@
+<%
+ boolean userLogged = session.getAttribute("userid") != null;
+ boolean adminLogged = session.getAttribute("adminid") != null;
+ String username = (String)session.getAttribute("username");
+ String adminname = (String)session.getAttribute("adminname");
+%>
+<header>
+  <div class="flex justify-between">
+    <div><strong>BookSafar</strong></div>
+    <nav>
+      <a href="../index.jsp">Home</a>
+      
+      <% if(adminLogged){ %>
+        | <a href="dashboard.jsp">Admin Panel</a>
+        | <span>Admin: <%=adminname%></span>
+        | <a href="logout.jsp">Logout</a>
+      <% } else { %>
+        | <a href="login.jsp">Admin</a>
+      <% } %>
+    </nav>
+  </div>
+</header>
